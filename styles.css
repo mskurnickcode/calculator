@@ -1,0 +1,84 @@
+body {
+    min-width: 100%;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    text-align: center;
+    padding-top: 10px;
+}
+
+.pageContainer {
+    width: 100%;
+    height: 95%;
+    top: 0;
+    background-color: lightsteelblue;
+}
+
+.calcContainer {
+    width: 100%;
+    height: 90%;
+    bottom: 0;
+    background-color: lightsteelblue;
+    /* Center vertically and horizontally */
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.innerframe {
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    height: 80%;
+    padding: 5px;
+    border: black solid 3px;
+    background: darkslategray;
+}
+
+.screen {
+    background: cornsilk;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    border: black 1px solid;
+}
+
+.screen span {
+    justify-self: center;
+    font-size: x-large;
+    font-weight: bolder;
+    font-style: italic;
+}
+.row {
+    width: 100%;
+    height: 15%;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 1px;
+}
+
+/*  buttons */
+button {
+    border: black 1px solid;
+    font-size: x-large;
+}
+
+.buttonClear{
+    width: 50%;
+}
+
+.buttonDelete {
+    width: 50%;
+}
+
+.buttonNumber {
+    height: 100%;
+    width: 100%;
+}
+
+
+
