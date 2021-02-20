@@ -21,12 +21,19 @@ window.onload = function eventListenerLoad() {
 buttonClear[0].addEventListener('click', clearScreen);
 deleteButton[0].addEventListener('click', deleteLast)
 
+//keyboard event listender
+document.addEventListener('keyup', keyboardPassthrough)
+
 //Screen
 var equationDisplay = ""
 var screenDisplay = "";
 
+
 //Functions
 function show() {
+    if (screenDisplay.includes(".") && this.innerHTML == "."){
+        return alert("A number can only have one decimal.")
+    }
     let text = this.innerHTML;
     screenDisplay += text;
     numberScreen.innerHTML = screenDisplay;
@@ -74,6 +81,13 @@ function solveEquation(equation){
     console.log(equationArray)
     const operators = ["/","*","+","-"];
 
+    //check for a divided by 0
+    for (var i = 0; i < equationArray.length; i++) {
+        if (equationArray[i] == "/" && equationArray[i+1] == "0"){
+            return "Not possible to divide by 0";
+        }
+    }
+
     for (var i = 0; i < operators.length; i++){
         while (equationArray.includes(operators[i])){
             let index = equationArray.indexOf(operators[i]);
@@ -95,4 +109,27 @@ function solvePortion(first, second, operator){
     (operator == "*") ? first*second :
     (operator == "+") ? first+second :
     first-second;
+}
+
+//add in keyboard event listening
+function keyboardPassthrough(key){
+    let typed = `${key.key}`;
+    const operators = ["/","*","+","-","="];
+    const digits = /[0-9]/ig;
+
+    if (operators.includes(key.key)){
+        for (let button in buttonOperators){
+            if (buttonOperators[button].innerHTML == typed){
+                buttonOperators[button].click();
+                break;
+            }
+        }
+    } else if(digits.test(typed)){
+        for (let button in buttonNumbers){
+            if (buttonNumbers[button].innerHTML == typed){
+                buttonNumbers[button].click();
+                break;
+            }
+        }
+    }
 }
