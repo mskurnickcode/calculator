@@ -57,10 +57,13 @@ function addToEquation(){
         screenDisplay = "";
         numberScreen.innerHTML = screenDisplay
     } else if (this.innerHTML == "="){
-        let toAdd = " " + screenDisplay + " " + this.innerHTML;
+        let toAdd = " " + screenDisplay + " ";
         equationDisplay += toAdd;
+        let answer = solveEquation(equationDisplay);
+        screenDisplay = answer;
+        equationDisplay = "";
         equationHolder.innerHTML = equationDisplay;
-        solveEquation(equationDisplay)
+        numberScreen.innerHTML = answer;
     }
 }
 
@@ -70,7 +73,6 @@ function solveEquation(equation){
     equationArray = equation.split(" ")
     console.log(equationArray)
     const operators = ["/","*","+","-"];
-    let result;
 
     for (var i = 0; i < operators.length; i++){
         while (equationArray.includes(operators[i])){
@@ -84,7 +86,7 @@ function solveEquation(equation){
         }
     }
     console.log(equationArray)
-    return result
+    return equationArray[1];
 }
 
 
